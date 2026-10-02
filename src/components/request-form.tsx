@@ -6,14 +6,23 @@ import { Textarea } from "@/components/ui/textarea";
 
 const serviceChoices = ["Assistance médicale", "Logement / hébergement", "Accompagnement des malades"];
 
+type FormErrors = {
+  service?: string;
+  name?: string;
+  phone?: string;
+  email?: string;
+  message?: string;
+  consent?: string;
+};
+
 export function RequestForm() {
   const [step, setStep] = useState(1);
   const [values, setValues] = useState({ service: "", name: "", phone: "", email: "", date: "", message: "", consent: false });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [sent, setSent] = useState(false);
 
   function validate(currentStep: number) {
-    const nextErrors: Record<string, string> = {};
+    const nextErrors: FormErrors = {};
     if (currentStep === 1 && !values.service) nextErrors.service = "Choisissez le type d’accompagnement recherché.";
     if (currentStep === 2) {
       if (values.name.trim().length < 2) nextErrors.name = "Indiquez votre nom complet.";
@@ -93,11 +102,11 @@ export function RequestForm() {
 
 export function ContactForm() {
   const [values, setValues] = useState({ name: "", email: "", message: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [sent, setSent] = useState(false);
   function submit(event: FormEvent) {
     event.preventDefault();
-    const nextErrors: Record<string, string> = {};
+    const nextErrors: FormErrors = {};
     if (values.name.trim().length < 2) nextErrors.name = "Indiquez votre nom complet.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) nextErrors.email = "Indiquez une adresse e-mail valide.";
     if (values.message.trim().length < 20) nextErrors.message = "Votre message doit contenir au moins 20 caractères.";
