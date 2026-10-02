@@ -19,6 +19,8 @@
  */
 
 @theme inline {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Sora", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,29 +61,45 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-gold: var(--brand-gold);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-footer-muted: var(--footer-muted);
+  --color-footer-line: var(--footer-line);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.5rem;
+  --background: oklch(0.985 0.009 105);
+  --foreground: oklch(0.235 0.028 166);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.235 0.028 166);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.235 0.028 166);
+  --primary: oklch(0.355 0.09 161);
+  --primary-foreground: oklch(0.985 0.005 105);
+  --secondary: oklch(0.91 0.055 90);
+  --secondary-foreground: oklch(0.27 0.06 161);
+  --muted: oklch(0.95 0.018 125);
+  --muted-foreground: oklch(0.47 0.035 164);
+  --accent: oklch(0.93 0.035 320);
+  --accent-foreground: oklch(0.35 0.12 316);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.88 0.02 145);
+  --input: oklch(0.84 0.025 145);
+  --ring: oklch(0.5 0.13 160);
+  --surface: oklch(1 0 0);
+  --surface-strong: oklch(0.94 0.032 148);
+  --brand-purple: oklch(0.42 0.18 315);
+  --brand-gold: oklch(0.73 0.14 82);
+  --footer: oklch(0.2 0.035 166);
+  --footer-foreground: oklch(0.97 0.008 120);
+  --footer-muted: oklch(0.78 0.025 150);
+  --footer-line: oklch(0.36 0.04 164);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +158,71 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
   }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 24%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@utility page-shell {
+  width: min(100% - 2rem, 76rem);
+  margin-inline: auto;
+}
+
+@utility eyebrow {
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+@utility hero-band {
+  background: linear-gradient(125deg, var(--background), var(--surface-strong));
+  border-bottom: 1px solid var(--border);
+}
+
+@utility nav-link {
+  color: var(--muted-foreground);
+  border-radius: 999px;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  transition: color 180ms ease, background 180ms ease;
+  &:hover { color: var(--foreground); background: var(--muted); }
+}
+
+@utility nav-link-active {
+  color: var(--primary);
+  background: var(--muted);
+}
+
+@utility footer-title {
+  color: var(--footer-foreground);
+  font-family: var(--font-display);
+  font-weight: 650;
+}
+
+@utility section-space {
+  padding-block: 4.5rem;
+  @media (min-width: 768px) { padding-block: 7rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { animation: reveal 700ms ease both; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 }
