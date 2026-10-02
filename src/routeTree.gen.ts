@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as AccompagnementRouteImport } from './routes/accompagnement'
+import { Route as ActualitesRouteImport } from './routes/actualites'
+import { Route as AssistanceMedicaleRouteImport } from './routes/assistance-medicale'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LogementRouteImport } from './routes/logement'
+import { Route as ReservationRouteImport } from './routes/reservation'
+import { Route as ServicesRouteImport } from './routes/services'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccompagnementRoute = AccompagnementRouteImport.update({
+  id: '/accompagnement',
+  path: '/accompagnement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActualitesRoute = ActualitesRouteImport.update({
+  id: '/actualites',
+  path: '/actualites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistanceMedicaleRoute = AssistanceMedicaleRouteImport.update({
+  id: '/assistance-medicale',
+  path: '/assistance-medicale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogementRoute = LogementRouteImport.update({
+  id: '/logement',
+  path: '/logement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservationRoute = ReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/accompagnement': typeof AccompagnementRoute
+  '/actualites': typeof ActualitesRoute
+  '/assistance-medicale': typeof AssistanceMedicaleRoute
+  '/contact': typeof ContactRoute
+  '/logement': typeof LogementRoute
+  '/reservation': typeof ReservationRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/accompagnement': typeof AccompagnementRoute
+  '/actualites': typeof ActualitesRoute
+  '/assistance-medicale': typeof AssistanceMedicaleRoute
+  '/contact': typeof ContactRoute
+  '/logement': typeof LogementRoute
+  '/reservation': typeof ReservationRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/accompagnement': typeof AccompagnementRoute
+  '/actualites': typeof ActualitesRoute
+  '/assistance-medicale': typeof AssistanceMedicaleRoute
+  '/contact': typeof ContactRoute
+  '/logement': typeof LogementRoute
+  '/reservation': typeof ReservationRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/accompagnement'
+    | '/actualites'
+    | '/assistance-medicale'
+    | '/contact'
+    | '/logement'
+    | '/reservation'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/accompagnement'
+    | '/actualites'
+    | '/assistance-medicale'
+    | '/contact'
+    | '/logement'
+    | '/reservation'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/accompagnement'
+    | '/actualites'
+    | '/assistance-medicale'
+    | '/contact'
+    | '/logement'
+    | '/reservation'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  AccompagnementRoute: typeof AccompagnementRoute
+  ActualitesRoute: typeof ActualitesRoute
+  AssistanceMedicaleRoute: typeof AssistanceMedicaleRoute
+  ContactRoute: typeof ContactRoute
+  LogementRoute: typeof LogementRoute
+  ReservationRoute: typeof ReservationRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accompagnement': {
+      id: '/accompagnement'
+      path: '/accompagnement'
+      fullPath: '/accompagnement'
+      preLoaderRoute: typeof AccompagnementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/actualites': {
+      id: '/actualites'
+      path: '/actualites'
+      fullPath: '/actualites'
+      preLoaderRoute: typeof ActualitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistance-medicale': {
+      id: '/assistance-medicale'
+      path: '/assistance-medicale'
+      fullPath: '/assistance-medicale'
+      preLoaderRoute: typeof AssistanceMedicaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logement': {
+      id: '/logement'
+      path: '/logement'
+      fullPath: '/logement'
+      preLoaderRoute: typeof LogementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reservation': {
+      id: '/reservation'
+      path: '/reservation'
+      fullPath: '/reservation'
+      preLoaderRoute: typeof ReservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  AccompagnementRoute: AccompagnementRoute,
+  ActualitesRoute: ActualitesRoute,
+  AssistanceMedicaleRoute: AssistanceMedicaleRoute,
+  ContactRoute: ContactRoute,
+  LogementRoute: LogementRoute,
+  ReservationRoute: ReservationRoute,
+  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
