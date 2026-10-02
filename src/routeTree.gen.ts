@@ -14,6 +14,7 @@ import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as AccompagnementRouteImport } from './routes/accompagnement'
 import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as AssistanceMedicaleRouteImport } from './routes/assistance-medicale'
+import { Route as AvisRouteImport } from './routes/avis'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LogementRouteImport } from './routes/logement'
 import { Route as ReservationRouteImport } from './routes/reservation'
@@ -44,6 +45,11 @@ const AssistanceMedicaleRoute = AssistanceMedicaleRouteImport.update({
   path: '/assistance-medicale',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AvisRoute = AvisRouteImport.update({
+  id: '/avis',
+  path: '/avis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/accompagnement': typeof AccompagnementRoute
   '/actualites': typeof ActualitesRoute
   '/assistance-medicale': typeof AssistanceMedicaleRoute
+  '/avis': typeof AvisRoute
   '/contact': typeof ContactRoute
   '/logement': typeof LogementRoute
   '/reservation': typeof ReservationRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/accompagnement': typeof AccompagnementRoute
   '/actualites': typeof ActualitesRoute
   '/assistance-medicale': typeof AssistanceMedicaleRoute
+  '/avis': typeof AvisRoute
   '/contact': typeof ContactRoute
   '/logement': typeof LogementRoute
   '/reservation': typeof ReservationRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/accompagnement': typeof AccompagnementRoute
   '/actualites': typeof ActualitesRoute
   '/assistance-medicale': typeof AssistanceMedicaleRoute
+  '/avis': typeof AvisRoute
   '/contact': typeof ContactRoute
   '/logement': typeof LogementRoute
   '/reservation': typeof ReservationRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/accompagnement'
     | '/actualites'
     | '/assistance-medicale'
+    | '/avis'
     | '/contact'
     | '/logement'
     | '/reservation'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/accompagnement'
     | '/actualites'
     | '/assistance-medicale'
+    | '/avis'
     | '/contact'
     | '/logement'
     | '/reservation'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/accompagnement'
     | '/actualites'
     | '/assistance-medicale'
+    | '/avis'
     | '/contact'
     | '/logement'
     | '/reservation'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   AccompagnementRoute: typeof AccompagnementRoute
   ActualitesRoute: typeof ActualitesRoute
   AssistanceMedicaleRoute: typeof AssistanceMedicaleRoute
+  AvisRoute: typeof AvisRoute
   ContactRoute: typeof ContactRoute
   LogementRoute: typeof LogementRoute
   ReservationRoute: typeof ReservationRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssistanceMedicaleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/avis': {
+      id: '/avis'
+      path: '/avis'
+      fullPath: '/avis'
+      preLoaderRoute: typeof AvisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccompagnementRoute: AccompagnementRoute,
   ActualitesRoute: ActualitesRoute,
   AssistanceMedicaleRoute: AssistanceMedicaleRoute,
+  AvisRoute: AvisRoute,
   ContactRoute: ContactRoute,
   LogementRoute: LogementRoute,
   ReservationRoute: ReservationRoute,
