@@ -69,6 +69,8 @@
   --color-footer-foreground: var(--footer-foreground);
   --color-footer-muted: var(--footer-muted);
   --color-footer-line: var(--footer-line);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
 }
 
 :root {
@@ -100,6 +102,8 @@
   --footer-foreground: oklch(0.97 0.008 120);
   --footer-muted: oklch(0.78 0.025 150);
   --footer-line: oklch(0.36 0.04 164);
+  --whatsapp: oklch(0.66 0.2 149);
+  --whatsapp-foreground: oklch(1 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
