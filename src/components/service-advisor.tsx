@@ -5,6 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { getServiceRecommendation } from "@/lib/service-advisor.functions";
 
+function renderRecommendation(text: string) {
+  return text.split("\n").map((line, index) => {
+    const cleanLine = line.replace(/\*\*/g, "").trim();
+    if (!cleanLine) return <span key={index} className="block h-2" />;
+    if (cleanLine.startsWith("### ")) return <h3 key={index} className="mt-4 font-display text-base font-semibold text-primary first:mt-0">{cleanLine.slice(4)}</h3>;
+    if (/^\d+\.\s/.test(cleanLine)) return <p key={index} className="pl-5 text-sm leading-7"><span className="-ml-5 mr-2 font-bold text-primary">{cleanLine.match(/^\d+\./)?.[0]}</span>{cleanLine.replace(/^\d+\.\s*/, "")}</p>;
+    return <p key={index} className="text-sm leading-7 text-foreground">{cleanLine}</p>;
+  });
+}
+
 export function ServiceAdvisor() {
   const recommend = useServerFn(getServiceRecommendation);
   const [description, setDescription] = useState("");
@@ -44,7 +54,7 @@ export function ServiceAdvisor() {
         {error && <p id="advisor-error" role="alert" className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
         <Button type="submit" disabled={loading} className="h-11 justify-self-start rounded-full px-6">{loading ? "Analyse en cours…" : "Obtenir ma recommandation"} <WandSparkles /></Button>
       </form>
-      {recommendation && <div className="mt-6 rounded-md border border-primary/20 bg-card p-5" role="status" aria-live="polite"><p className="font-display font-semibold text-primary">Votre recommandation</p><div className="mt-3 whitespace-pre-line text-sm leading-7 text-foreground">{recommendation}</div></div>}
+      {recommendation && <div className="mt-6 rounded-md border border-primary/20 bg-card p-5" role="status" aria-live="polite"><p className="font-display font-semibold text-primary">Votre recommandation</p><div className="mt-3">{renderRecommendation(recommendation)}</div></div>}
     </section>
   );
 }
