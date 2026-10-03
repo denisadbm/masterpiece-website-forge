@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Facebook, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/site-layout";
+import { SocialIcon } from "@/components/social-icon";
 import { ContactForm } from "@/components/request-form";
 import { contact } from "@/lib/site-content";
 
