@@ -3,13 +3,37 @@ import medicalImage from "@/assets/medical-care.jpg";
 import housingImage from "@/assets/housing-care.jpg";
 import companionImage from "@/assets/companion-care.jpg";
 
+export type SocialPlatform = "facebook" | "instagram" | "tiktok" | "linkedin" | "youtube";
+
+export type SocialLink = {
+  platform: SocialPlatform;
+  label: string;
+  name: string;
+  /** URL officielle du réseau. Laisser null tant que la page n'existe pas : le lien ne s'affiche nulle part. */
+  url: string | null;
+};
+
+/**
+ * Liens officiels des réseaux sociaux.
+ * Pour activer un réseau, remplacez simplement `url: null` par l'adresse de la page officielle.
+ * Seuls les réseaux avec une URL renseignée sont affichés sur le site.
+ */
+export const socialLinks: SocialLink[] = [
+  { platform: "facebook", label: "Facebook", name: "imassist Tant", url: "https://www.facebook.com/imassist.tant" },
+  { platform: "instagram", label: "Instagram", name: "LASISTANT.PRO", url: null },
+  { platform: "tiktok", label: "TikTok", name: "LASISTANT.PRO", url: null },
+  { platform: "linkedin", label: "LinkedIn", name: "LASISTANT.PRO", url: null },
+  { platform: "youtube", label: "YouTube", name: "LASISTANT.PRO", url: null },
+];
+
+/** Réseaux réellement affichés : uniquement ceux dont l'URL officielle est renseignée. */
+export const activeSocialLinks = socialLinks.filter((social): social is SocialLink & { url: string } => Boolean(social.url));
+
 export const contact = {
   phones: ["+216 54 479 391", "+216 25 393 214"],
   emails: ["imassist.service@hotmail.com", "moryendi@gmail.com"],
   address: "Avenue Habib Thamer, Tunisie",
-  socialLinks: [
-    { label: "Facebook", name: "imassist Tant", url: "https://www.facebook.com/imassist.tant" },
-  ],
+  socialLinks: activeSocialLinks,
 };
 
 export const services = [
