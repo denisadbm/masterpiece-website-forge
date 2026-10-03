@@ -7,6 +7,9 @@ export const contact = {
   phones: ["+216 54 479 391", "+216 25 393 214"],
   emails: ["imassist.service@hotmail.com", "moryendi@gmail.com"],
   address: "Avenue Habib Thamer, Tunisie",
+  socialLinks: [
+    { label: "Facebook", name: "imassist Tant", url: "https://www.facebook.com/imassist.tant" },
+  ],
 };
 
 export const services = [
@@ -48,6 +51,7 @@ export const navItems = [
   { label: "À propos", to: "/a-propos" as const },
   { label: "Espace infos", to: "/actualites" as const },
   { label: "Contact", to: "/contact" as const },
+  { label: "Avis", to: "/avis" as const },
 ];
 
 export const articles = [

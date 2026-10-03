@@ -10,4 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep public marketing content in `src/lib/site-content.ts` and reuse shared shells/sections; this prevents drift across the multi-page site.
-- Public request forms remain client-side presentation until Lovable Cloud is enabled; do not imply submissions are persisted or emailed.
+- Customer reviews are stored in Lovable Cloud as pending and become public only after moderation; this protects testimonial authenticity and visitor privacy.

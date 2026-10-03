@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Phone, X, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Menu, Phone, X, Mail, MapPin, ArrowUpRight, Facebook } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import logoAsset from "@/assets/lasistant-pro-logo.png.asset.json";
@@ -65,6 +65,7 @@ export function SiteFooter() {
             <a href="tel:+21654479391" className="flex items-center gap-3 hover:text-footer-foreground"><Phone className="h-4 w-4" />{contact.phones[0]}</a>
             <a href={`mailto:${contact.emails[0]}`} className="flex items-center gap-3 break-all hover:text-footer-foreground"><Mail className="h-4 w-4" />{contact.emails[0]}</a>
             <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0" />{contact.address}</p>
+            {contact.socialLinks.map((social) => <a key={social.url} href={social.url} target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-footer-foreground"><Facebook className="h-4 w-4" />{social.label} · {social.name}</a>)}
           </div>
         </div>
       </div>
