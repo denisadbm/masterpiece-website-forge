@@ -15,9 +15,9 @@ type FormErrors = {
   consent?: string;
 };
 
-export function RequestForm() {
+export function RequestForm({ initialService = "", initialMessage = "" }: { initialService?: string; initialMessage?: string }) {
   const [step, setStep] = useState(1);
-  const [values, setValues] = useState({ service: "", name: "", phone: "", email: "", date: "", message: "", consent: false });
+  const [values, setValues] = useState({ service: serviceChoices.includes(initialService) ? initialService : "", name: "", phone: "", email: "", date: "", message: initialMessage, consent: false });
   const [errors, setErrors] = useState<FormErrors>({});
   const [sent, setSent] = useState(false);
 
